@@ -117,8 +117,10 @@ def get_args_parser():
                         help='Use class token instead of global pool for classification')
 
     # Dataset parameters
-    parser.add_argument('--data_path', default='/datasets01/imagenet_full_size/061417/', type=str,
-                        help='dataset path')
+    #parser.add_argument('--data_path', default='/datasets01/imagenet_full_size/061417/', type=str,
+                       # help='dataset path')
+    parser.add_argument('--data_path', default='/Users/yoho/Desktop/datasets/imagenet_mini', type=str,
+                        help='dataset path')    
     parser.add_argument('--nb_classes', default=1000, type=int,
                         help='number of the classification types')
 
@@ -160,7 +162,7 @@ def main(args):
 
     print('job dir: {}'.format(os.path.dirname(os.path.realpath(__file__))))
     print("{}".format(args).replace(', ', ',\n'))
-
+    args.device = 'cpu'  #这是测试时更改的代码
     device = torch.device(args.device)
 
     # fix the seed for reproducibility
